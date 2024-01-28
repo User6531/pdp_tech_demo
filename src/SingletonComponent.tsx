@@ -5,12 +5,19 @@ const Singleton = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="flex justify-evenly gap-4">
-      <Modal show={showModal} onClose={() => setShowModal(false)} />
-      <BlueButton />
-      <OpenModalButton onOpen={() => setShowModal(true)} />
-      <RedButton />
-    </div>
+    <>
+      Singleton is a creational design pattern
+      <br />
+      that lets be ensure that a class has only one instance,
+      <br />
+      while providing a global access point to this instance.
+      <div className="flex justify-evenly gap-4 mt-6">
+        <Modal show={showModal} onClose={() => setShowModal(false)} />
+        <BlueButton />
+        <OpenModalButton onOpen={() => setShowModal(true)} />
+        <RedButton />
+      </div>
+    </>
   );
 };
 
@@ -39,9 +46,9 @@ function Modal({ show, onClose }: { show: boolean; onClose: () => void }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
             </svg>
           </button>
@@ -56,9 +63,9 @@ function Modal({ show, onClose }: { show: boolean; onClose: () => void }) {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             ></path>
           </svg>
