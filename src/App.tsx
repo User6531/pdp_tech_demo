@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Singleton from "./SingletonComponent";
+import SingletonComponent from "./SingletonComponent";
 import AdapterComponent from "./AdapterComponent";
 import ObserverComponent from "./ObserverComponent";
+import BuilderComponent from "./BuilderComponent";
 
 type TCatalog = "creational" | "structural" | "behavioral";
 
@@ -68,7 +69,7 @@ function CatalogBody({ catalog }: { catalog: TCatalog }) {
   }
 }
 
-type TCreationalType = "singleton" | "module";
+type TCreationalType = "singleton" | "builder";
 function CreationalCatalog() {
   const [type, setType] = useState<TCreationalType>("singleton");
   return (
@@ -86,12 +87,27 @@ function CreationalCatalog() {
             Singleton
           </button>
         </li>
+        <li className="me-2">
+          <button
+            className={`inline-block p-4 ${
+              type === "builder"
+                ? "text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500"
+                : "rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+            }`}
+            onClick={() => setType("builder")}
+          >
+            Builder
+          </button>
+        </li>
       </ul>
       <div className="w-full p-4 dark:bg-gray-800">
         {(() => {
           switch (type) {
             case "singleton":
-              return <Singleton />;
+              return <SingletonComponent />;
+
+            case "builder":
+              return <BuilderComponent />;
 
             default:
               return null;
