@@ -103,7 +103,7 @@ function CityA() {
       />
       <div className="">
         <div className="font-bold text-sm mb-2">
-          City A (temperature: {currentTemperature + " °C" ?? "N/A"})
+          City A (temperature: {currentTemperature ?? "N/A"} °C)
         </div>
         <div>
           <button
@@ -155,7 +155,7 @@ function CityB() {
       />
       <div className="">
         <div className="font-bold text-sm mb-2">
-          City B (temperature: {currentTemperature + " °C" ?? "N/A"})
+          City B (temperature: {currentTemperature ?? "N/A"} °C)
         </div>
         <div>
           <button
@@ -207,7 +207,7 @@ function CityC() {
       />
       <div className="">
         <div className="font-bold text-sm mb-2">
-          City C (temperature: {currentTemperature + " °C" ?? "N/A"})
+          City C (temperature: {currentTemperature ?? "N/A"} °C)
         </div>
         <div>
           <button
