@@ -56,11 +56,12 @@ function Modal({ show, onClose }: { show: boolean; onClose: () => void }) {
 
         <div className="p-6 pt-0 text-center">
           <svg
-            className={`w-20 h-20 text-${color}-600 mx-auto`}
+            className={`w-20 h-20 mx-auto`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
+            style={{ color: color ?? "transparent" }}
           >
             <path
               strokeLinecap="round"
