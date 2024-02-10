@@ -22,6 +22,8 @@ jobs:
           path: ./dist
   # Deploy Job
   deploy:
+    permissions:
+      contents: write
     # Add a dependency to the build job
     needs: build
     # Specify runner + deployment step
