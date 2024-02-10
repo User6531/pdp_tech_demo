@@ -40,7 +40,7 @@ const ObserverComponent = () => {
 
   return (
     <>
-      Observer is a pattern that lets you define a subscription mechanism
+      Observer - is a pattern that lets you define a subscription mechanism
       <br />
       to notify multiple objects about any events that happen to the object
       they`re observing.
