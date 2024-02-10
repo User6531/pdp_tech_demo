@@ -1,7 +1,5 @@
 name: DevOps-GitHibActions
 on: push
-permissions:
-  contents: write
 jobs:
   # Build Job
   build:
@@ -22,7 +20,6 @@ jobs:
         with:
           name: production-files
           path: ./dist
-
   # Deploy Job
   deploy:
     # Add a dependency to the build job
