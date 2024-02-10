@@ -1,5 +1,7 @@
 name: DevOps-GitHibActions
 on: push
+permissions:
+  contents: write
 jobs:
   # Build Job
   build:
