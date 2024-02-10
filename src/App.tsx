@@ -4,6 +4,7 @@ import AdapterComponent from "./AdapterComponent";
 import ObserverComponent from "./ObserverComponent";
 import BuilderComponent from "./BuilderComponent";
 import DecoratorComponent from "./DecoratorComponent";
+import MementoComponent from "./MementoComponent";
 
 type TCatalog = "creational" | "structural" | "behavioral";
 
@@ -168,7 +169,7 @@ function StructuralCatalog() {
   );
 }
 
-type TBehavioralType = "observer";
+type TBehavioralType = "observer" | "memento";
 function BehavioralCatalog() {
   const [type, setType] = useState<TBehavioralType>("observer");
   return (
@@ -186,12 +187,27 @@ function BehavioralCatalog() {
             Observer
           </button>
         </li>
+        <li className="me-2">
+          <button
+            className={`inline-block p-4 ${
+              type === "memento"
+                ? "text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500"
+                : "rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+            }`}
+            onClick={() => setType("memento")}
+          >
+            Memento
+          </button>
+        </li>
       </ul>
       <div className="w-full p-4 dark:bg-gray-800">
         {(() => {
           switch (type) {
             case "observer":
               return <ObserverComponent />;
+
+            case "memento":
+              return <MementoComponent />;
 
             default:
               return null;
