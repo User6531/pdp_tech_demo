@@ -1,4 +1,5 @@
 import { useState } from "react";
+import packageJson from "../package.json";
 import SingletonComponent from "./SingletonComponent";
 import AdapterComponent from "./AdapterComponent";
 import ObserverComponent from "./ObserverComponent";
@@ -13,6 +14,9 @@ function App() {
 
   return (
     <div className="w-screen h-screen bg-gray-700 flex items-center justify-center text-white text-center">
+      <div className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg fixed bottom-0 left-0">
+        v{packageJson.version}
+      </div>
       <div className="flex flex-col">
         <div className="flex rounded shadow fixed bottom-0 left-2/4 -translate-x-1/2">
           <button
