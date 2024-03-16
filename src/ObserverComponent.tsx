@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
-type TTemperatureObserver = (temperature: number) => void;
+type TTemperatureObserver = {
+  id: string;
+  func: (temperature: number) => void;
+};
 
 class WeatherSubject {
   private observers: TTemperatureObserver[] = [];
@@ -11,7 +14,7 @@ class WeatherSubject {
 
   public detach(observerToRemove: TTemperatureObserver) {
     this.observers = this.observers.filter(
-      (observer) => observerToRemove.name !== observer.name
+      (observer) => observerToRemove.id !== observer.id
     );
   }
 
@@ -21,7 +24,7 @@ class WeatherSubject {
   }
 
   private notify(temperature: number[]) {
-    this.observers.forEach((observer, i) => observer(temperature[i]));
+    this.observers.forEach((observer, i) => observer.func(temperature[i]));
   }
 
   private fetchWeather() {
@@ -83,8 +86,10 @@ function CityA() {
     setCurrentTemperature(temperature);
   };
 
-  const subscribe = () => weatherSubject.attach(onTemperatureUpdatedCityA);
-  const unsubscribe = () => weatherSubject.detach(onTemperatureUpdatedCityA);
+  const observer = { func: onTemperatureUpdatedCityA, id: "cityA" };
+
+  const subscribe = () => weatherSubject.attach(observer);
+  const unsubscribe = () => weatherSubject.detach(observer);
 
   useEffect(() => {
     subscribe();
@@ -135,8 +140,10 @@ function CityB() {
     setCurrentTemperature(temperature);
   };
 
-  const subscribe = () => weatherSubject.attach(onTemperatureUpdatedCityB);
-  const unsubscribe = () => weatherSubject.detach(onTemperatureUpdatedCityB);
+  const observer = { func: onTemperatureUpdatedCityB, id: "cityB" };
+
+  const subscribe = () => weatherSubject.attach(observer);
+  const unsubscribe = () => weatherSubject.detach(observer);
 
   useEffect(() => {
     subscribe();
@@ -186,9 +193,10 @@ function CityC() {
   const onTemperatureUpdatedCityC = (temperature: number) => {
     setCurrentTemperature(temperature);
   };
+  const observer = { func: onTemperatureUpdatedCityC, id: "cityC" };
 
-  const subscribe = () => weatherSubject.attach(onTemperatureUpdatedCityC);
-  const unsubscribe = () => weatherSubject.detach(onTemperatureUpdatedCityC);
+  const subscribe = () => weatherSubject.attach(observer);
+  const unsubscribe = () => weatherSubject.detach(observer);
 
   useEffect(() => {
     subscribe();
